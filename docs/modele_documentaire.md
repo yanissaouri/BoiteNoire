@@ -95,6 +95,7 @@ par tous ses événements, donc on les stocke une seule fois et on les met à jo
   "type": " ",
   "timestamp": " ",
   "details": {
+    "errorType": " ",
     "service": " ",
     "message": " ",
   }
