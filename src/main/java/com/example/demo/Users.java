@@ -13,6 +13,7 @@ public class Users {
     private String email;
     private String region;
     private Instant createdAt;
+    private UsersCategory usersCategory;
 
     public String getId() {
         return id;
@@ -34,6 +35,10 @@ public class Users {
         return createdAt;
     }
 
+    public UsersCategory getUsersCategory() {
+        return usersCategory;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -52,5 +57,9 @@ public class Users {
 
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public void setUsersCategory(UsersCategory usersCategory) {
+        this.usersCategory = usersCategory;
     }
 }
