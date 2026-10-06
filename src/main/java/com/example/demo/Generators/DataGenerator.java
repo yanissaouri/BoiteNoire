@@ -1,5 +1,9 @@
-package com.example.demo;
+package com.example.demo.Generators;
 
+import com.example.demo.Constants.Const;
+import com.example.demo.Entity.Users;
+import com.example.demo.Enum.UsersCategory;
+import com.example.demo.Repository.UsersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -9,21 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.example.demo.Const.*;
+
 
 @Component
-@Profile("Generator")
+@Profile("generator")
 public class DataGenerator implements CommandLineRunner {
 
-    private final UsersRepository usersRepository ;
+    private final UsersRepository usersRepository;
+    private final EventGenerator eventGenerator;
     private final Random random = new Random(67);
 
-    public DataGenerator(UsersRepository usersRepository){
+    public DataGenerator(UsersRepository usersRepository, EventGenerator eventGenerator){
         this.usersRepository = usersRepository;
+        this.eventGenerator = eventGenerator;
     }
 
     private String randomRegion() {
-        String[] regions = {"paris", "lyon", "marseille", "toulouse", "nantes"};
+        String[] regions = {"marseille", "lyon", "paris", "toulouse", "nantes"};
         return regions[random.nextInt(regions.length)];
     }
 
@@ -63,6 +69,8 @@ public class DataGenerator implements CommandLineRunner {
 
        usersRepository.saveAll(users);
        System.out.println(users.size() + " utilisateurs générés.");
+
+       eventGenerator.generate(users);
        
    }
 }

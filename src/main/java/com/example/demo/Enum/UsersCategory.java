@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Enum;
 
 public enum UsersCategory {
     HEAVY(10), MEDIUM(3), LIGHT(1);
